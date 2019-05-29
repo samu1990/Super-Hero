@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center mt-5>
+  <v-layout justify-center mt-5 class="ingreso">
     <v-flex xs12 sm8 md6 xl4>
       <v-card>
         <v-card-text
@@ -13,7 +13,7 @@
           <v-btn block color="error" @click="google()">
             <v-icon left dark>fab fa-google</v-icon>Google
           </v-btn>
-          <v-btn block color="info" @click="facebook()">
+          <v-btn block color="info" @click="facebook()" disabled>
             <v-icon left dark>fab fa-facebook-f</v-icon>Facebook
           </v-btn>
         </v-card-text>
@@ -65,3 +65,8 @@ export default {
   }
 };
 </script>
+<style>
+.ingreso {
+  margin: 0 5%;
+}
+</style>

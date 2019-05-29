@@ -56,8 +56,8 @@
         </div>
       </v-list>
       <v-divider></v-divider>
-      <v-btn @click="cerrarSession()" v-if="usuario!=''">
-        <span class="mr-2">Cerrar sessión</span>
+      <v-btn @click="cerrarSession()" block v-if="usuario!=''">
+        <span class="mr-2">LOG OUT</span>
         <v-icon>fas fa-address-book</v-icon>
       </v-btn>
     </v-navigation-drawer>
@@ -139,5 +139,8 @@ export default {
 }
 .v-list .v-icon {
   margin-right: 5%;
+}
+.v-btn--block {
+  width: 90%;
 }
 </style>
