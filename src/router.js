@@ -12,9 +12,6 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => import('./views/Home.vue'),
-      meta: {
-        requiresAuth: true
-      }
     },
     {
       path: '/ingreso',
@@ -73,7 +70,7 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       next({
-        name: 'ingreso'
+        name: '/home'
       })
     }
   } else {

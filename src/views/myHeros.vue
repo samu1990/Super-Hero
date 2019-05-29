@@ -2,12 +2,12 @@
   <div class="text-center myHero">
     <div class="filtro">
       <h1>my favorite heroes</h1>
-      <p>myheros {{myHeros.length}}</p>
-      <div v-for="(hero, index) of myHeros" :key="index">
+      <p>{{arrayHeros}}</p>
+      <div v-for="(hero, index) of arrayHeros" :key="index">
         <span>{{hero.hero.name}}</span>
       </div>
       <div class="tusheroes"></div>
-      <v-btn @click="subirMyhero(myHeros)">subir</v-btn>
+      <v-btn @click="subirMyhero(arrayHeros)">subir</v-btn>
       <input
         class="form-control mr-sm-2"
         type="search"
@@ -20,7 +20,7 @@
       <div class="heros" v-if="palabra.length > 1">
         <v-layout row wrap class="galeria">
           <v-flex xs4 v-for="(hero, index) of filterItems" :key="index">
-            <figure @click="anadirHero({hero})">
+            <figure @click="anadirHero(hero)">
               <v-img :src="`${hero.images.lg}`"></v-img>
               <figcaption class="figure-caption">{{hero.name}}</figcaption>
             </figure>
@@ -42,13 +42,20 @@ export default {
   data() {
     return {
       palabra: "",
-      myHeros: []
+      arrayHeros: []
     };
   },
   created() {
+    if (this.usuario.Myhero) {
+      this.arrayHeros = this.usuario.Myhero;
+    } else {
+      this.arrayHeros = [];
+    }
     this.$store.dispatch("getHeroes");
   },
+
   computed: {
+    ...mapState(["usuario"]),
     filterItems() {
       if (this.palabra.length > 1) {
         return this.$store.getters.hero.filter(hero => {
@@ -60,8 +67,7 @@ export default {
           );
         });
       }
-    },
-    ...mapState(["usuario"])
+    }
   },
   methods: {
     subirMyhero(array) {
@@ -72,15 +78,10 @@ export default {
         });
     },
     anadirHero(a) {
-      //this.usuario.Myhero.push(a);
-      this.myHeros.push(a);
+      //this.myHeros.push(a);
+      console.log(this.usuario.Myhero);
     }
   },
-  created: {
-    cargarHero() {
-      this.myHeros = this.usuario.usuario;
-    }
-  }
 };
 </script>
 <style>

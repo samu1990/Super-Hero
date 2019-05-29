@@ -19,9 +19,11 @@
             <v-icon>fas fa-film</v-icon>
           </v-btn>
         </router-link>
-        <v-btn icon v-if="usuario==''" disabled>
-          <v-icon>fas fa-film</v-icon>
-        </v-btn>
+        <router-link to="/Ingreso" v-if="usuario==''">
+          <v-btn icon>
+            <v-icon>fas fa-users-cog</v-icon>
+          </v-btn>
+        </router-link>
         <router-link to="/Search">
           <v-btn icon>
             <v-icon>fas fa-search</v-icon>
@@ -54,7 +56,7 @@
         </div>
       </v-list>
       <v-divider></v-divider>
-      <v-btn @click="cerrarSession" v-if="usuario!=''">
+      <v-btn @click="cerrarSession()" v-if="usuario!=''">
         <span class="mr-2">Cerrar sessión</span>
         <v-icon>fas fa-address-book</v-icon>
       </v-btn>

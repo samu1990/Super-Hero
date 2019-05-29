@@ -101,7 +101,8 @@ export default new Vuex.Store({
             nombre: user.displayName,
             email: user.email,
             uid: user.uid,
-            foto: user.photoURL
+            foto: user.photoURL,
+            Myhero: []
           }
           await db
             .collection("usuarios")
@@ -122,7 +123,7 @@ export default new Vuex.Store({
       auth.signOut()
       commit('nuevoUsuario', null)
       router.push({
-        name: 'ingreso'
+        name: '/'
       })
       console.log('Cerrar Seccion');
 
