@@ -222,6 +222,9 @@ export default {
       if (name == "Captain Marvel") {
         name = "Captain Marvel (Carol Danvers)";
       }
+      if (name == "Ant-Man") {
+        name = "Hank Pym";
+      }
 
       const urlAPI =
         "https://gateway.marvel.com:443/v1/public/characters?name=" +
